@@ -1,0 +1,174 @@
+name: calendar
+namespace: core.calendar
+version: "0.1.0"
+description: "Calendar event triggers via iCal/ICS polling"
+
+triggers:
+  - name: EventUpcoming
+    description: "Fires when an event's start time is within look_ahead"
+    options:
+      - name: source
+        type: string
+        description: "URL or local file path to .ics calendar"
+      - name: look_ahead
+        type: string
+        default: "15m"
+        description: "Go duration: how far ahead to check for upcoming events"
+      - name: poll_interval
+        type: string
+        default: "5m"
+        description: "Go duration: how often to poll the calendar source"
+      - name: filter_title
+        type: string
+        description: "Include only events whose title contains this substring (case-insensitive)"
+      - name: filter_location
+        type: string
+        description: "Include only events whose location contains this substring (case-insensitive)"
+      - name: filter_description
+        type: string
+        description: "Include only events whose description contains this substring (case-insensitive)"
+      - name: filter_category
+        type: string
+        description: "Include only events with a matching category (case-insensitive substring)"
+      - name: exclude_title
+        type: string
+        description: "Skip events whose title contains this substring (case-insensitive)"
+      - name: exclude_location
+        type: string
+        description: "Skip events whose location contains this substring (case-insensitive)"
+      - name: exclude_description
+        type: string
+        description: "Skip events whose description contains this substring (case-insensitive)"
+    context:
+      - name: EventUID
+        type: string
+        description: "Unique identifier of the calendar event"
+      - name: EventTitle
+        type: string
+        description: "Event summary/title"
+      - name: EventStart
+        type: string
+        description: "Start time in RFC 3339 format"
+      - name: EventEnd
+        type: string
+        description: "End time in RFC 3339 format"
+      - name: EventDescription
+        type: string
+        description: "Event description, empty if not set"
+      - name: EventLocation
+        type: string
+        description: "Event location, empty if not set"
+      - name: EventCategories
+        type: string
+        description: "Comma-separated event categories, empty if not set"
+      - name: StartsIn
+        type: string
+        description: "Go duration until event starts"
+
+  - name: EventStarted
+    description: "Fires when an event's start time has passed within the poll window"
+    options:
+      - name: source
+        type: string
+        description: "URL or local file path to .ics calendar"
+      - name: poll_interval
+        type: string
+        default: "5m"
+        description: "Go duration: how often to poll the calendar source"
+      - name: filter_title
+        type: string
+        description: "Include only events whose title contains this substring (case-insensitive)"
+      - name: filter_location
+        type: string
+        description: "Include only events whose location contains this substring (case-insensitive)"
+      - name: filter_description
+        type: string
+        description: "Include only events whose description contains this substring (case-insensitive)"
+      - name: filter_category
+        type: string
+        description: "Include only events with a matching category (case-insensitive substring)"
+      - name: exclude_title
+        type: string
+        description: "Skip events whose title contains this substring (case-insensitive)"
+      - name: exclude_location
+        type: string
+        description: "Skip events whose location contains this substring (case-insensitive)"
+      - name: exclude_description
+        type: string
+        description: "Skip events whose description contains this substring (case-insensitive)"
+    context:
+      - name: EventUID
+        type: string
+        description: "Unique identifier of the calendar event"
+      - name: EventTitle
+        type: string
+        description: "Event summary/title"
+      - name: EventStart
+        type: string
+        description: "Start time in RFC 3339 format"
+      - name: EventEnd
+        type: string
+        description: "End time in RFC 3339 format"
+      - name: EventDescription
+        type: string
+        description: "Event description, empty if not set"
+      - name: EventLocation
+        type: string
+        description: "Event location, empty if not set"
+      - name: EventCategories
+        type: string
+        description: "Comma-separated event categories, empty if not set"
+
+  - name: EventEnded
+    description: "Fires when an event's end time has passed within the poll window"
+    options:
+      - name: source
+        type: string
+        description: "URL or local file path to .ics calendar"
+      - name: poll_interval
+        type: string
+        default: "5m"
+        description: "Go duration: how often to poll the calendar source"
+      - name: filter_title
+        type: string
+        description: "Include only events whose title contains this substring (case-insensitive)"
+      - name: filter_location
+        type: string
+        description: "Include only events whose location contains this substring (case-insensitive)"
+      - name: filter_description
+        type: string
+        description: "Include only events whose description contains this substring (case-insensitive)"
+      - name: filter_category
+        type: string
+        description: "Include only events with a matching category (case-insensitive substring)"
+      - name: exclude_title
+        type: string
+        description: "Skip events whose title contains this substring (case-insensitive)"
+      - name: exclude_location
+        type: string
+        description: "Skip events whose location contains this substring (case-insensitive)"
+      - name: exclude_description
+        type: string
+        description: "Skip events whose description contains this substring (case-insensitive)"
+    context:
+      - name: EventUID
+        type: string
+        description: "Unique identifier of the calendar event"
+      - name: EventTitle
+        type: string
+        description: "Event summary/title"
+      - name: EventStart
+        type: string
+        description: "Start time in RFC 3339 format"
+      - name: EventEnd
+        type: string
+        description: "End time in RFC 3339 format"
+      - name: EventDescription
+        type: string
+        description: "Event description, empty if not set"
+      - name: EventLocation
+        type: string
+        description: "Event location, empty if not set"
+      - name: EventCategories
+        type: string
+        description: "Comma-separated event categories, empty if not set"
